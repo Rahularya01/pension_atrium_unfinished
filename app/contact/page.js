@@ -3,7 +3,7 @@ import ContactUs from "@/Components/ContactUs";
 
 export default function Page() {
   return (
-    <main className="container">
+    <main className="lg:container">
       <ContactUs />
     </main>
   );

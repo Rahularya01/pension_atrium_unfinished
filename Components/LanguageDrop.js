@@ -2,9 +2,9 @@
 import React, { useState } from "react";
 import imgAPI from "@/public/images/ImageApi";
 import Image from "next/image";
+import { cn } from "@/lib/utils";
 
-const LanguageDrop = () => {
-  const dropdown = [];
+const LanguageDrop = ({ containerClassName, className }) => {
   const languages = [
     { code: "en", name: "English", flag: imgAPI.home_vectors[22] },
     { code: "cz", name: "CZECH", flag: imgAPI.home_vectors[23] },
@@ -23,11 +23,14 @@ const LanguageDrop = () => {
   };
 
   return (
-    <div className="relative">
+    <div className={cn("relative", containerClassName)}>
       {/* Dropdown Button */}
       <button
         onClick={toggleDropdown}
-        className="bg-dropdown border border-gray-300 rounded px-2 py-3 w-full justify-between text-xs flex items-center"
+        className={cn(
+          "bg-neutral-50 border border-gray-300 rounded px-2 py-3 w-full justify-between text-xs flex items-center",
+          className
+        )}
       >
         <Image
           width="0"

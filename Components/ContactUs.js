@@ -1,10 +1,6 @@
-import React from "react";
-import FooterColumn from "./FooterColumn";
-import text from "../public/text.json";
-import imgAPI from "@/public/images/ImageApi";
-import { Label } from "./ui/label";
+import { LocationIcon, PhoneIcon, SMSIcon } from "@/assets/icons";
 import { Button } from "./ui/button";
-import { BookNowIcon, LocationIcon, PhoneIcon, SMSIcon } from "@/assets/icons";
+import { Label } from "./ui/label";
 
 const ContactUs = () => {
   return (
@@ -15,7 +11,7 @@ const ContactUs = () => {
 
       <div className="flex flex-col-reverse lg:flex-row justify-center mb-20 items-stretch">
         {/* Left side with Google Map */}
-        <div className="flex-1 w-full mt-6 lg:mt-0 lg:w-4/5 p-4">
+        <div className="flex-1 h-80 lg:h-auto w-full mt-6 lg:mt-0 lg:w-4/5 lg:p-4">
           <iframe
             title="Google Map"
             className="w-full h-full"
@@ -23,13 +19,50 @@ const ContactUs = () => {
             allowFullScreen=""
             loading="lazy"
           ></iframe>
+
+          <div className="mt-8 w-full lg:hidden">
+            <div>
+              <h2 className="text-black text-2xl font-bold leading-relaxed mb-3 text-center">
+                Contact Details
+              </h2>
+
+              <div className="space-y-6 text-center">
+                <div className="space-y-3">
+                  <h3 className="text-neutral-700 text-base font-bold">
+                    Pension Atrium
+                  </h3>
+
+                  <p className="text-neutral-700 text-base font-normal">
+                    Žižkova 504{"  "}541 01 - Trutnov
+                  </p>
+                  <p className="text-neutral-700 text-base font-normal">
+                    {`50°33'39.393"N, 15°54'15.424"E`}
+                  </p>
+                </div>
+                <div className="space-y-3">
+                  <h3 className="text-neutral-700 text-base font-bold">
+                    Zdeněk Plecháč
+                  </h3>
+
+                  <p className="text-neutral-700 text-base font-normal">
+                    penzionatrium@seznam.cz <br /> plechac@zskomtu.cz
+                  </p>
+                  <p className="text-neutral-700 text-base font-normal">
+                    tel.: (+420) 731 415 455 <br /> www.penziontrutnov.cz
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            
+          </div>
         </div>
 
         {/* Right side with contact form */}
-        <div className="flex-1 w-full lg:w-1/2 p-4 ">
-          <div className="border rounded-lg shadow p-9 py-10">
+        <div className="flex-1 w-full lg:w-1/2 lg:p-4 px-4">
+          <div className="lg:border lg:rounded-lg lg:shadow lg:px-9 lg:py-10">
             <div className="mb-4">
-              <h2 className="text-2xl font-bold mb-2 text-center">
+              <h2 className="text-2xl font-bold mb-2 text-center md:text-start lg:text-center">
                 Leave Us a Message
               </h2>
             </div>
@@ -83,13 +116,13 @@ const ContactUs = () => {
                 ></textarea>
               </div>
 
-              <Button className="bg-primary-gradient text-base py-3 px-4 gap-2.5 hidden lg:flex items-center justify-center font-bold w-full">
+              <Button className="bg-primary-gradient text-base py-3 px-4 gap-2.5 flex items-center justify-center font-bold w-full">
                 Send
               </Button>
             </form>
           </div>
 
-          <div className="mt-20 grid grid-cols-2 w-full">
+          <div className="mt-20 lg:grid grid-cols-2 w-full hidden">
             <div>
               <h2 className="text-black text-base font-bold leading-relaxed mb-3">
                 Contact info

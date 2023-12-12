@@ -1,10 +1,11 @@
 "use client";
+import { BookNowIcon, UserIcon } from "@/assets/icons";
 import Image from "next/image";
 import { useState } from "react";
-import { default as Img, default as imgAPI } from "../public/images/ImageApi";
+import { default as imgAPI } from "../public/images/ImageApi";
 import text from "../public/text.json";
 import Dropdown from "./Dropdown";
-import ResponsiveFloor from "./ResponsiveFloor";
+import { Button } from "./ui/button";
 
 const CustomComponent = ({ heading, desc }) => {
   const [dropdownValue, setDropdownValue] = useState(
@@ -13,14 +14,14 @@ const CustomComponent = ({ heading, desc }) => {
 
   return (
     <div className="container">
-      <div className="p-4 mb-4 mx-12 hidden lg:block">
+      <div className="w-full hidden lg:block">
         {/* Heading and Subtext */}
         <div className="mb-4">
           <h2 className="text-2xl font-bold mb-6 mt-4">{heading}</h2>
           <p className="text-gray-500">{desc}</p>
         </div>
 
-        <div className="flex items-center gap-26 bg-floor p-4 rounded">
+        <div className="flex items-center w-full justify-between bg-floor p-6 rounded">
           {/* Element 1: Image */}
 
           <div className="relative w-60 h-3/4">
@@ -29,6 +30,7 @@ const CustomComponent = ({ heading, desc }) => {
               height={150}
               sizes="100vw"
               src={imgAPI.accom_img[0]}
+              className="w-full max-w-[240px] h-[150px]"
               alt="Background"
             />
 
@@ -47,15 +49,11 @@ const CustomComponent = ({ heading, desc }) => {
             </div>
           </div>
           {/* Element 2: Text with Icon */}
-          <div className="flex flex-col ">
-            <p className="text-2xl font-medium text-customblue ">1 Bed Room</p>
-            <div className="flex items-center mt-1 ">
-              <p className="text-2xl font-medium text-customblue">1</p>
-              <img
-                src={imgAPI.accom_vectors[10]}
-                alt="icon"
-                className="h-4 w-4"
-              />
+          <div className="flex flex-col gap-4 ">
+            <p className="text-2xl font-bold text-indigo-900 ">1 Bed Room</p>
+            <div className="flex items-center gap-1">
+              <p className="text-2xl font-bold text-indigo-900">1</p>
+              <UserIcon className="w-5 h-5" />
             </div>
           </div>
 
@@ -63,36 +61,29 @@ const CustomComponent = ({ heading, desc }) => {
           <div className="border h-36"></div>
 
           {/* Element 4 and 5: Text and Subtext */}
-          <div className="flex justify-center flex-col">
-            <p className="text-2xlg text-customblue font-bold">500 Kč</p>
-            <p className="text-gray-500 text-center mt-1">Tourist</p>
+          <div className="flex justify-center flex-col gap-5">
+            <p className="text-indigo-900 text-3xl font-bold ">500 Kč</p>
+            <p className="text-black text-xl font-normal">Tourist</p>
           </div>
-          <div className="flex justify-center flex-col">
-            <p className="text-2xlg text-customblue font-bold">600 Kč</p>
-            <p className="text-gray-500 text-center mt-1">Standard</p>
+          <div className="flex justify-center flex-col gap-5">
+            <p className="text-indigo-900 text-3xl font-bold ">600 Kč</p>
+            <p className="text-black text-xl font-normal">Standard</p>
           </div>
 
           {/* Element 6: Dropdown */}
-          <div className=" flex-col gap-x-2 items-center">
+          <div className="flex flex-col gap-y-4 items-center">
             <Dropdown
               value={dropdownValue}
               onChange={(value) => setDropdownValue(value)}
             />
-            <button className="w-full py-3 mt-2 px-4 rounded bg-gradient-to-r from-btngrad_1 to-btngrad_2 text-white text-xs flex items-center justify-center gap-1 font-urbanist">
-              <Image
-                src={Img.home_vectors[1]}
-                width={12}
-                height={12}
-                alt="image"
-                className="h-3.5 w-3.5"
-              />
+            <Button className="bg-primary-gradient text-base py-3 px-4 gap-2.5 hidden lg:flex items-center justify-center font-bold w-full">
+              <BookNowIcon className="w-4 h-4" />
               {text.nav_btn}
-            </button>
+            </Button>
           </div>
         </div>
       </div>
-      <ResponsiveFloor heading="Ground Floor" desc={text.first_floor} />
-      <ResponsiveFloor heading="First Floor" desc={text.ground_floor} />
+   
     </div>
   );
 };

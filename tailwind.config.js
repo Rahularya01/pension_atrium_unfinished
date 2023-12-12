@@ -61,6 +61,7 @@ module.exports = {
       },
       backgroundImage: {
         "primary-gradient": "linear-gradient(90deg, #1E3C72 0%, #2A5298 100%)",
+        "secondary-gradient": "linear-gradient(to right, #3494E6, #EC6EAD)",
       },
       keyframes: {
         "accordion-down": {

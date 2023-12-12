@@ -41,3 +41,16 @@ export { default as LocationIcon } from "../svg/location.svg";
 export { default as PhoneIcon } from "../svg/call-calling.svg";
 export { default as SMSIcon } from "../svg/sms.svg";
 
+// Footer logo
+export { default as FooterLogoIcon } from "../svg/footer_logo.svg";
+export { default as FooterLogoTextIcon } from "../svg/footer_logo_text.svg";
+
+// Social Icons
+export { default as FacebookIcon } from "../svg/facebook.svg";
+export { default as InstagramIcon } from "../svg/instagram.svg";
+
+export { default as UserIcon } from "../svg/user.svg";
+
+// Flags
+export { default as USFlagIcon } from "../svg/united-states-flag-icon.svg";
+export { default as CzechRIcon } from "../svg/czech-republic-flag-icon.svg";

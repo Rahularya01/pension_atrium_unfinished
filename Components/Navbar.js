@@ -1,14 +1,12 @@
 // components/Navbar.js
 "use client";
-import { BookNowIcon } from "@/assets/icons";
-import imgAPI from "@/public/images/ImageApi";
+import { BookNowIcon, CzechRIcon, USFlagIcon } from "@/assets/icons";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useRef, useState } from "react";
 import images from "../public/images/ImageApi.js";
 import content from "../public/text.json";
-import LanguageDrop from "./LanguageDrop";
 import { Button } from "./ui/button";
 import {
   Select,
@@ -17,13 +15,37 @@ import {
   SelectTrigger,
   SelectValue,
 } from "./ui/select";
+import { Menu, X } from "lucide-react";
+import USFlag from "@/assets/png/united-states-flag-icon.png";
+import CzechFlag from "@/assets/png/czech-republic-flag-icon.png";
 
 const Navbar = () => {
   const headerRef = useRef(null);
 
-  const languages = [
-    { code: "en", name: "English", flag: imgAPI.home_vectors[22] },
-    { code: "cz", name: "CZECH", flag: imgAPI.home_vectors[23] },
+  const languagesMobile = [
+    { code: "en", name: "EN", flag: <USFlagIcon className="w-6" /> },
+    { code: "cz", name: "CZ", flag: <CzechRIcon className="w-6" /> },
+  ];
+
+  const languagesDesktop = [
+    {
+      code: "en",
+      name: "EN",
+      flag: (
+        <div className="w-5 h-5 flex items-center justify-center rounded-full overflow-hidden">
+          <Image className="w-full h-full" src={USFlag} alt="US Flag" />
+        </div>
+      ),
+    },
+    {
+      code: "cz",
+      name: "CZ",
+      flag: (
+        <div className="w-5 h-5 flex items-center justify-center rounded-full overflow-hidden">
+          <Image className="w-full h-full" src={CzechFlag} alt="US Flag" />
+        </div>
+      ),
+    },
   ];
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -53,16 +75,14 @@ const Navbar = () => {
       <div className="lg:hidden relative">
         <button
           type="button"
-          className="focus:outline-none"
+          className="focus:outline-none  text-neutral-700"
           onClick={toggleMenu}
         >
-          <Image
-            src={images.home_vectors[18]}
-            alt="image"
-            className="h-auto"
-            width={32}
-            height={32}
-          />
+          {isMenuOpen ? (
+            <X className="w-8 h-8" />
+          ) : (
+            <Menu className="w-8 h-8" />
+          )}
         </button>
       </div>
 
@@ -122,25 +142,22 @@ const Navbar = () => {
               </nav>
 
               <div className="space-y-4">
-                <Select>
-                  <SelectTrigger className="w-full">
-                    <SelectValue placeholder="Select a fruit" />
+                <Select defaultValue={"en"}>
+                  <SelectTrigger className="w-full border-0 border-transparent bg-neutral-50 rounded-lg">
+                    <SelectValue
+                      className="w-full flex items-center gap-2 font-bold"
+                      placeholder="Select Language"
+                    />
                   </SelectTrigger>
                   <SelectContent>
-                    {languages.map((language, i) => (
+                    {languagesMobile.map((language, i) => (
                       <SelectItem
-                        className="flex items-center"
+                        className="flex items-center pl-2"
                         key={i}
                         value={language.code}
                       >
-                        <div className="flex items-center">
-                          <Image
-                            width={16}
-                            height={16}
-                            src={languages.flag}
-                            alt={`Flag for ${languages.name}`}
-                            className="w-4 h-4 mr-2"
-                          />
+                        <div className="flex items-center font-bold text-neutral-700 gap-2">
+                          {language.flag}
                           {language.name}
                         </div>
                       </SelectItem>
@@ -181,7 +198,28 @@ const Navbar = () => {
 
         <div className="flex items-center gap-4">
           {/* Your language dropdown code goes here */}
-          <LanguageDrop />
+          <Select defaultValue="en">
+            <SelectTrigger className="w-[101px] border-0 border-transparent bg-neutral-50 rounded-lg">
+              <SelectValue
+                className="w-full flex items-center gap-2 font-bold"
+                placeholder="Select Language"
+              />
+            </SelectTrigger>
+            <SelectContent>
+              {languagesDesktop.map((language, i) => (
+                <SelectItem
+                  className="flex items-center pl-2"
+                  key={i}
+                  value={language.code}
+                >
+                  <div className="flex items-center font-bold text-neutral-700 gap-2">
+                    {language.flag}
+                    {language.name}
+                  </div>
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
 
           {/* Button */}
           <Button className="bg-primary-gradient text-base py-3 px-4 gap-2.5 hidden lg:flex items-center justify-center font-bold">
