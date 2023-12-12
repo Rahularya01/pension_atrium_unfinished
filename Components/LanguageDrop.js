@@ -4,33 +4,18 @@ import imgAPI from "@/public/images/ImageApi";
 import Image from "next/image";
 
 const LanguageDrop = () => {
-    const dropdown =[
-       
-     
-    ]
+  const dropdown = [];
   const languages = [
-    
-    { code: 'en', name: "English", flag: imgAPI.home_vectors[22] },
-    { code: 'cz', name: "CZECH", flag: imgAPI.home_vectors[23] },
-
-    
-
-    
+    { code: "en", name: "English", flag: imgAPI.home_vectors[22] },
+    { code: "cz", name: "CZECH", flag: imgAPI.home_vectors[23] },
   ];
   const [selectedLanguage, setSelectedLanguage] = useState(languages[0]);
-  
+
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const handleLanguageChange = (language) => {
     setSelectedLanguage(language);
     setDropdownOpen(false);
-  
-    
-   
-   
-    
-
-    
   };
 
   const toggleDropdown = () => {

@@ -1,45 +1,44 @@
-import React from "react";
-import Image from "next/image";
-import imgAPI from "@/public/images/ImageApi";
+import { CupIcon, SupperIcon } from "@/assets/icons";
 
+const meals = [
+  {
+    icon: <CupIcon className="w-5 h-5" />,
+    title: "Breakfast",
+    price: 80,
+  },
+  {
+    icon: <SupperIcon className="w-5 h-5" />,
+    title: "Half board",
+    price: 160,
+  },
+  {
+    icon: <SupperIcon className="w-5 h-5" />,
+    title: "Full Board",
+    price: 240,
+  },
+];
 
-const Element = ({ image1, text1, text2 }) => {
+const Meal = ({ mealText }) => {
   return (
-    <div className="flex  justify-between mb-4">
-      <div className="mr-2 flex gap-4 items-center">
-        <Image src={image1} height={21} width={21} sizes="100vh" alt="icon" className="h-6 w-6" /> {/*  */}
-        <p className="text-sm">{text1}</p>
-      </div>
-      <div className="items-center">
-        <p className="text-blue-900 font-bold text-xl">{text2}</p>
-      </div>
-    </div>
-  );
-};
+    <div className="p-6 w-full">
+      <p className="text-center text-neutral-700 text-base font-normal leading-relaxed">
+        {mealText}
+      </p>
 
-const Meal = ({mealText}) => {
-  return (
-    <div className=" w-auto rounded p-2 ">
-      {/* Section 1 */}
-      <div className="mb-2">
-        <h3 className="text-sm text-center  mb-6">{mealText}</h3>
-        <div>
-          <Element
-            image1={imgAPI.accom_vectors[4]}
-            text1="Breakfast"
-            text2="80 Kč"
-          />
-          <Element
-            image1={imgAPI.accom_vectors[5]}
-            text1="Half board"
-            text2="160 Kč"
-          />
-          <Element
-            image1={imgAPI.accom_vectors[5]}
-            text1="Full board"
-            text2="240 Kč"
-          />
-        </div>
+      <div className="mt-6 space-y-3">
+        {meals.map((meal, i) => (
+          <div key={i} className="w-full flex items-center justify-between">
+            <div className="flex items-center gap-4 even:ml-auto">
+              {meal.icon}
+              <p className=" text-neutral-700 text-base font-normal leading-relaxed ">
+                {meal.title}
+              </p>
+            </div>
+            <p className="text-right text-indigo-900 text-base font-bold leading-relaxed">
+              {meal.price} Kč
+            </p>
+          </div>
+        ))}
       </div>
     </div>
   );

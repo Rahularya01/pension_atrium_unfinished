@@ -1,32 +1,37 @@
 // components/Sports.js
+import { ImageIcon } from "@/assets/icons";
 import imgAPI from "@/public/images/ImageApi";
-import text from "../../public/text.json";
+import Image from "next/image";
 import SportsElements from "./SportsElements";
-import ResponsiveImage from "../ResponsiveImage";
 
 const Sports = () => {
   return (
-    <div className="flex flex-col lg:flex-row p-4 lg:p-8 items-center content-center mb-4">
+    <div className="flex flex-col lg:flex-row items-center mb-4 gap-6 lg:gap-14">
       {/* Left Part with Image */}
-      <div className="lg:mr-8 lg:w-3/6 lg:h-full mb-4">
-        <ResponsiveImage
-          small={imgAPI.ser_img[1]}
-          large={imgAPI.ser_img[4]}
-          icon={imgAPI.accom_vectors[9]}
-        
+      <div className="relative w-full lg:max-w-[440px] h-72 lg:h-[437px]">
+        <div className="absolute bottom-2 right-2 w-12 h-12 rounded-lg flex items-center justify-center bg-white">
+          <ImageIcon className="w-5 h-4" />
+        </div>
+        <Image
+          width={440}
+          height={437}
+          className="w-full h-full object-cover rounded-[10px]"
+          src={imgAPI.ser_img[4]}
+          alt="Meals"
         />
       </div>
 
-      {/* Right Part with Sports Details */}
-      <div className="lg:w-1/2 w-full mt-4 mx-4 lg:mx-0 lg:mt-0">
-        <h2 className="text-2xl font-bold mb-2 mt-5 lg:mt-0">
+      {/* Right Part with Meal Details */}
+      <div className=" w-full space-y-6 max-w-[720px]">
+        <h2 className="text-2xl font-bold mb-2 text-center md:text-start">
           Sports Centre of Komensky School
         </h2>
-        <p className="text-gray-600 ">{text.sports_txt}</p>
+        <p className="text-gray-600">
+          In the sports centre of Komenský School, which is located in the very
+          neighbourhood of our pension (map), we offer to our guests:
+        </p>
 
-        <div className=" w-4/5 mt-2 lg:mt-4">
-          <SportsElements />
-        </div>
+        <SportsElements />
       </div>
     </div>
   );

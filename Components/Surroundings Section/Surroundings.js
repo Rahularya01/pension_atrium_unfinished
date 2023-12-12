@@ -1,13 +1,10 @@
-
-
-'use client'
+"use client";
 import React, { useEffect, useState } from "react";
 import SurroundingElement from "./SurroundingElement";
-import imgAPI from "@/public/images/ImageApi"; 
+import imgAPI from "@/public/images/ImageApi";
 import text from "../../public/text.json";
 
 const Surroundings = () => {
-
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -27,12 +24,10 @@ const Surroundings = () => {
     };
   }, []);
   return (
-    <div>
-      <div>
-      <p className="md:text-2x text-2xl font-bold text-center mt-8 mb-8">
-          Surroundings
-        </p>
-      </div>
+    <div className="container py-10 lg:py-16">
+      <h1 className="md:text-5xl text-4xl font-bold mb-8 lg:mb-12 text-center">
+        Surroundings
+      </h1>
       <SurroundingElement
         heading="Trutnov city Center"
         text={text.surr_1}
@@ -73,7 +68,7 @@ const Surroundings = () => {
         reverse={false}
       />
 
-{!isMobile && (
+      {!isMobile && (
         <SurroundingElement
           heading="Dolce Pond"
           text={text.surr_6}

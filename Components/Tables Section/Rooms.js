@@ -1,68 +1,79 @@
-import React from 'react';
-import Image from 'next/image';
-import imgAPI from '@/public/images/ImageApi';
+import {
+  BathtubIcon,
+  FridgeIcon,
+  TVSquareIcon,
+  ToiletIcon,
+} from "@/assets/icons";
 
-const Element = ({  image1,image2, text1,text2 }) => {
-  return (
-    <div className="flex  justify-between mb-4">
-      <div className="mr-2 flex gap-4 items-center">
-        <Image src={image1} height={21} width={21} alt='icon' className="h-6 w-6"/> {/*  */}
-        <p className="text-sm">{text1}</p>
-      </div>
-      <div className='flex gap-4 items-center'>
-        <Image src={image2} height={21} width={21} alt='image' className="h-6 w-6"/> {/*  */}
-        <p className="text-sm">{text2}</p>
-      </div>
-    </div>
-  );
-};
+const tourists = [
+  {
+    icon: <BathtubIcon className="w-5 h-5" />,
+    title: "Shared",
+  },
+  {
+    icon: <TVSquareIcon className="w-5 h-5" />,
+    title: "Shared",
+  },
+  {
+    icon: <ToiletIcon className="w-5 h-5" />,
+    title: "Shared",
+  },
+  {
+    icon: <FridgeIcon className="w-5 h-5" />,
+    title: "Shared",
+  },
+];
+
+const standards = [
+  {
+    icon: <BathtubIcon className="w-5 h-5" />,
+    title: "Private",
+  },
+  {
+    icon: <TVSquareIcon className="w-5 h-5" />,
+    title: "Private",
+  },
+  {
+    icon: <ToiletIcon className="w-5 h-5" />,
+    title: "Private",
+  },
+  {
+    icon: <FridgeIcon className="w-5 h-5" />,
+    title: "Private",
+  },
+];
 
 const Rooms = () => {
   return (
-    <div className=" w-auto rounded p-2 ">
-      {/* Section 1 */}
-      <div className="mb-2">
-        <h3 className="text-lg text-center font-bold mb-2">Tourist</h3>
-        <div>
-          <Element
-           
-            image1={imgAPI.accom_vectors[0]} 
-            text1="Shared"
-            image2={imgAPI.accom_vectors[1]} 
-            text2="Shared"
-          />
-          <Element
-            
-            image1={imgAPI.accom_vectors[2]} 
-            text1="Shared"
-            image2={imgAPI.accom_vectors[3]} 
-            text2="Shared"
-
-          />
-        </div>
-        <hr className="my-4" />
+    <div className="p-6 w-full">
+      <h4 className="text-center text-black text-xl font-bold leading-loose">
+        Tourist
+      </h4>
+      <div className="w-full grid grid-cols-2 grid-rows-2 gap-2.5 mt-2">
+        {tourists.map((tourist, i) => (
+          <div key={i} className="flex items-center gap-4 even:ml-auto">
+            {tourist.icon}
+            <p className=" text-neutral-700 text-base font-normal leading-relaxed ">
+              {tourist.title}
+            </p>
+          </div>
+        ))}
       </div>
 
-      {/* Section 2 */}
-      <div>
-        <h3 className="text-lg text-center font-bold mb-1">Standard</h3>
-        <div>
-        <Element
-           
-           image1={imgAPI.accom_vectors[0]} 
-           text1="Private"
-           image2={imgAPI.accom_vectors[1]} 
-           text2="Private"
-         />
-         <Element
-           
-           image1={imgAPI.accom_vectors[2]} 
-           text1="Private"
-           image2={imgAPI.accom_vectors[3]} 
-           text2="Private"
+      <hr className="bg-black/10 my-3" />
 
-         />
-        </div>
+      <h4 className="text-center text-black text-xl font-bold leading-loose">
+        Standard
+      </h4>
+      <div className="w-full grid grid-cols-2 grid-rows-2 gap-2.5 mt-2">
+        {standards.map((standard, i) => (
+          <div key={i} className="flex items-center gap-4 even:ml-auto">
+            {standard.icon}
+            <p className=" text-neutral-700 text-base font-normal leading-relaxed ">
+              {standard.title}
+            </p>
+          </div>
+        ))}
       </div>
     </div>
   );

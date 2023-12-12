@@ -6,19 +6,15 @@ import Image from "next/image";
 
 const ImageGrid = ({ images }) => {
   return (
-    <div className="flex flex-wrap mt-8 mx-4">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 container py-4 lg:py-7">
       {imgAPI.home_img.map((image, index) => (
-        <div
-          key={index}
-          className="w-full sm:w-1/2 lg:w-1/4 lg:w-1/4 xl:w-1/4 p-4 "
-        >
+        <div key={index} className="w-full">
           <Image
-            width="0"
-            height="0"
-            sizes="100vw"
+            width={800}
+            height={600}
             src={image}
             alt={`Image ${index + 1}`}
-            className="w-full h-auto rounded"
+            className="w-full h-40 rounded"
           />
         </div>
       ))}

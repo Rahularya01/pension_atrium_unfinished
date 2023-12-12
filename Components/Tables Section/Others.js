@@ -1,55 +1,51 @@
-import React from "react";
-import Image from "next/image";
-import imgAPI from "@/public/images/ImageApi";
+import { LaundryIcon, TVRoundedIcon, TransportIcon } from "@/assets/icons";
 
+const meals = [
+  {
+    icon: <TransportIcon className="w-5 h-5" />,
+    title: "Transport",
+    description: "VW Transporter, max. 8 people",
+    price: "10 Kč/km",
+  },
+  {
+    icon: <LaundryIcon className="w-5 h-5" />,
+    title: "Laundry",
+    description: "Max. 7kg",
+    price: "150 Kč",
+  },
+  {
+    icon: <TVRoundedIcon className="w-5 h-5" />,
+    title: "Borrowing TV",
+    description: "Only for Tourist Room",
+    price: "50 Kč/day",
+  },
+];
 
-const Element = ({ image1, text,subtext, text2 }) => {
+const Others = () => {
   return (
-    <div className="flex  justify-between mt-2 mb-8">
-      <div className="mr-2 flex gap-2 items-center">
-        <Image src={image1} height={21} width={21} alt="icon" className="h-6 w-6" /> {/*  */}
-        <div className="flex-col items-center">
-        <p className="text-sm font-bold">{text}</p>
-        <p className="text-sm">{subtext}</p>
-        </div>
-        
-      </div>
-      <div className="items-center">
-        <p className="text-blue-900 font-bold text-xl">{text2}</p>
+    <div className="p-6 w-full">
+      <div className="space-y-3">
+        {meals.map((meal, i) => (
+          <div key={i} className="w-full flex items-center justify-between">
+            <div className="flex items-center gap-4 even:ml-auto">
+              {meal.icon}
+              <div className="space-y-1">
+                <div className="text-neutral-700 text-base font-semibold leading-relaxed">
+                  {meal.title}
+                </div>
+                <p className=" text-neutral-700 text-sm font-normal">
+                  {meal.description}
+                </p>
+              </div>
+            </div>
+            <p className="text-right text-indigo-900 text-base font-bold leading-relaxed">
+              {meal.price}
+            </p>
+          </div>
+        ))}
       </div>
     </div>
   );
 };
 
-const Meal = () => {
-  return (
-    <div className=" w-auto rounded p-2 ">
-    
-      <div className="mb-2">
-        
-       
-          <Element
-            image1={imgAPI.accom_vectors[6]}
-            text="Transport"
-            subtext="VW Transporter,max. 8 people"
-            text2="10 Kč/km"
-          />
-          <Element
-            image1={imgAPI.accom_vectors[7]}
-            text="Laundary"
-            subtext="Max. 7Kg"
-            text2="150 Kč"
-          />
-          <Element
-            image1={imgAPI.accom_vectors[8]}
-            text="Borrwing TV"
-            subtext="Only for Tourist Room"
-            text2="50 Kč/day"
-          />
-        </div>
-      </div>
-   
-  );
-};
-
-export default Meal;
+export default Others;
